@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Post Detail</title>
+</head>
+<body>
+<h2>{{ object.title}}</h2>
+
+<p class="other_posts">
+    {% if object.get_previous_by_modify_date %}
+    <a href="{{ object.get_previous_post.get_absolute_url }}" title="View Previous post">&laquo;--{{ object.get_previous_post }}</a>
+    {% endif %}
+
+    {% if object.get_next_by_modify_date %}
+    | <a href="{{ object.get_next_post.get_absolute_url }}" title="View next post">{{ object.get_next_post }}--&raquo;</a>
+    {% endif %}
+</p>
+
+<p class="date">{{ object.modify_date|date:"Y N d" }}</p>
+<br/>
+
+<div class="body">
+    {{ object.content|linebreaks }}
+</div>
+</body>
+</html>

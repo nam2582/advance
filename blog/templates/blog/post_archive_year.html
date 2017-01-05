@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Post Archives Year</title>
+</head>
+<body>
+<h1>Post Archives for {{ year|date:"Y" }}</h1>
+<ul>
+    {% for date in date_list %}
+    <li style="display: inline;">
+        <a href="{% url 'blog:post_month_archive' year|date:'Y' date|date:'b' %}">{{ date|date:"F" }}</a>
+    </li>
+    {% endfor %}
+</ul>
+<br/>
+
+<div>
+    <ul>
+        {% for post in object_list %}
+        <li>{{ post.modify_date|date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;
+            <a href="{{ post.get_absolute_url }}"><strong>{{ post.title }}</strong></a> </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>
