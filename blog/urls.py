@@ -27,4 +27,6 @@ urlpatterns = [
     # Example : /today/
     url(r'^today/$', PostTAV.as_view(), name='post_today_archive'),
 
+    url(r'^api/', blog_api.as_view()),
+
 ]
